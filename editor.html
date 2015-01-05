@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <link rel="stylesheet" href="styleSheet/ForEditor.css" />
+  <script type="text/javascript" src="script/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="script/JavaScript.js"></script>
+  <!--<script src="script/angular-1.0.1.min.js"></script>
+  <script>
+    function editor($scope) {
+      $scope.test = '释义A1, 释义A2, 释义A3, 释义A4';
+      $scope.word = {
+        prons: [],
+        characteristic: [
+          {
+            chara: 'n',
+            groups: [
+              {
+                briefs: ['释义A1', '释义A1'],
+                detail: ['释义A1', '释义A2', '释义A3', '释义A4']
+              }/*,
+              {
+                briefs: ['释义B1'],
+                details: ['释义B1','释义B2']
+              }*/
+            ],
+            sentence: {
+              Ch: '例句中文',
+              En: 'Sentence in English'
+            }
+          },
+          {
+            chara: 'adj',
+            groups: [
+              {
+                briefs: ['释义B1'],
+                detail: ['释义B1', '释义B2']
+              },
+              {
+                briefs: ['释义C1'],
+                details: ['释义C1', '释义C2']
+              }
+            ],
+            sentence: {
+              Ch: '例句中文',
+              En: 'Sentence in English'
+            }
+          }
+        ]
+      };
+    }
+  </script>-->
+</head>
+<body>
+  <div id="editor_container">
+    <div class="the_word">headword</div>
+    <div id="phonetic_symbol">
+      <div id="add_ps">添加发音</div>
+      <script type="text/javascript">
+        var phon_block = document.getElementById("phonetic_symbol");
+        
+        for (var i = 0; i < words.phonetic.length; ++i) {
+          var new_one_ps = document.createElement("div");
+          new_one_ps.setAttribute("class", "one_ps");
+
+          var new_delete = document.createElement("img");
+          new_delete.setAttribute("class", "delete");
+          new_delete.setAttribute("src", "image/delete.png");
+          new_one_ps.appendChild(new_delete);
+
+          var new_ps = document.createElement("span");
+          new_ps.setAttribute("class", "ps");
+
+          var phon = document.createTextNode(words.phonetic[i]);
+          new_ps.appendChild(phon);
+
+          new_one_ps.insertBefore(new_ps, new_delete);
+          phon_block.insertBefore(new_one_ps, add_ps);
+        }
+      </script>
+      <!--<div class="one_ps">
+        <span class="ps">/‘hed.wɜrd1/</span>
+        <img class="delete" src="image/delete.png" />
+      </div>
+      <div class="one_ps">
+        <span class="ps">/‘hed.wɜrd2/</span>
+        <img class="delete" src="image/delete.png" />
+      </div>-->
+      
+    </div>
+    <div id="bref_tran">
+      <div class="head">简短释义</div>
+      <ul id="bref_block">
+        <li class="characteristic cha_n">
+          <img class="ico_n" src="image/n.png" />
+          <div class="translate">
+            <!--c_tran use to focus-->
+            <span class="c_tran" contenteditable="true">释义A1</span>,
+            <span class="c_tran" contenteditable="true">释义A2</span>
+            <!--<input placeholder="释义A1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />,
+            <input placeholder="释义A2" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />-->
+            <!--<input ng-repeat="x in word.characteristic" ng-model="word.characteristic.groups.briefs[x]" />-->
+            <!--<span contenteditable="true">{{test}}</span>-->
+            
+          </div>
+        </li>
+        <li class="characteristic cha_adj">
+          <img class="ico_adj" src="image/adj.png" />
+          <div class="translate">
+            <span class="c_tran" contenteditable="true">释义B1</span>;
+            <span class="c_tran" contenteditable="true">释义C1</span>
+            <!--<input placeholder="释义B1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />;
+            <input placeholder="释义C1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />-->
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="detial_tran">
+      <div class="head">详细释义</div>
+      <ul id="detail_block">
+        <li class="characteristic cha_n">
+          <img class="ico_n" src="image/n.png" />
+          <div class="translate">
+            <span class="c_tran" contenteditable="true">释义A1</span>,
+            <span class="c_tran" contenteditable="true">释义A2</span>,
+            <span class="c_tran" contenteditable="true">释义A3</span>,
+            <span class="c_tran" contenteditable="true">释义A4</span>
+            <!--<input placeholder="释义A1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />, 
+            <input placeholder="释义A2" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />, 
+            <input placeholder="释义A3" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />,
+            <input placeholder="释义A4" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />-->
+          </div>
+          <div class="sentence">
+            <!--<input class="chinese_s" placeholder="例句中文" />
+            <input class="english_s" placeholder="Sentence in English" />-->
+            <span class="chinese_s c_sen" contenteditable="true">例句中文</span>
+            <span class="english_s c_sen" contenteditable="true">Sentence in English</span>
+          </div>
+        </li>
+        <li class="characteristic cha_adj">
+          <img class="ico_adj" src="image/adj.png" />
+          <div class="translate">
+            <span class="c_tran" contenteditable="true">释义B1</span>,
+            <span class="c_tran" contenteditable="true">释义B2</span>;
+            <span class="c_tran" contenteditable="true">释义C1</span>,
+            <span class="c_tran" contenteditable="true">释义C2</span>
+            <!--<input placeholder="释义B1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />,
+            <input placeholder="释义B2" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />;
+            <input placeholder="释义C1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />,
+            <input placeholder="释义C2" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />-->
+          </div>
+          <div class="sentence">
+            <!--<input class="chinese_s" placeholder="例句中文" />
+            <input class="english_s" placeholder="Sentence in English" />-->
+            <span class="chinese_s c_sen" contenteditable="true">例句中文</span>
+            <span class="english_s c_sen" contenteditable="true">Sentence in English</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <button id="save" value="Save">save</button>
+  </div>
+  
+</body>
+</html>
