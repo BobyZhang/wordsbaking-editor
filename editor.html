@@ -57,25 +57,26 @@
     <div id="phonetic_symbol">
       <div id="add_ps">添加发音</div>
       <script type="text/javascript">
-        var phon_block = document.getElementById("phonetic_symbol");
+        var phonBlock = document.getElementById("phonetic_symbol");
+        var addPs = document.getElementById("add_ps");
         
         for (var i = 0; i < words.phonetic.length; ++i) {
-          var new_one_ps = document.createElement("div");
-          new_one_ps.setAttribute("class", "one_ps");
+          var newOnePs = document.createElement("div");
+          newOnePs.className = "one_ps";
 
-          var new_delete = document.createElement("img");
-          new_delete.setAttribute("class", "delete");
-          new_delete.setAttribute("src", "image/delete.png");
-          new_one_ps.appendChild(new_delete);
+          var newDelete = document.createElement("img");
+          newDelete.className = "delete";
+          newDelete.src = "image/delete.png";
+          newOnePs.appendChild(newDelete);
 
-          var new_ps = document.createElement("span");
-          new_ps.setAttribute("class", "ps");
+          var newPs = document.createElement("span");
+          newPs.className = "ps";
 
           var phon = document.createTextNode(words.phonetic[i]);
-          new_ps.appendChild(phon);
+          newPs.appendChild(phon);
 
-          new_one_ps.insertBefore(new_ps, new_delete);
-          phon_block.insertBefore(new_one_ps, add_ps);
+          newOnePs.insertBefore(newPs, newDelete);
+          phonBlock.insertBefore(newOnePs, addPs);
         }
       </script>
       <!--<div class="one_ps">

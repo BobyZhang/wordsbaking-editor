@@ -18,8 +18,8 @@
 
 $(document).ready(function () {
 
-    var phon_block = document.getElementById("phonetic_symbol");
-    var delete_phon = phon_block.getElementsByClassName("detele");
+    var phonBlock = document.getElementById("phonetic_symbol");
+    var deletePhon = phonBlock.getElementsByClassName("detele");
     //document.onclick = function () {
     //    alert("haha");
     //    for (var i = 0; i < words.phonetic.length; ++i) {
@@ -35,35 +35,35 @@ $(document).ready(function () {
     //    var one_ps = this.parentNode;
     //    phon_block.removeChild(one_ps);
     //}
-    var delete_block = $(".delete");
-    delete_block.click(function () {
-        var one_ps = this.parentNode;
-        phon_block.removeChild(one_ps);
+    var deleteBlock = $(".delete");
+    deleteBlock.click(function () {
+        var onePs = this.parentNode;
+        phonBlock.removeChild(onePs);
     })
 
-    var add_ps = document.getElementById("add_ps");
-    add_ps.onclick = function () {
-        var new_one_ps = document.createElement("div");
-        new_one_ps.setAttribute("class", "one_ps");
+    var addPs = document.getElementById("add_ps");
+    addPs.onclick = function () {
+        var newOnePs = document.createElement("div");
+        newOnePs.className = "one_ps";
 
-        var new_ps = document.createElement("span");
-        new_ps.setAttribute("class", "ps");
+        var newPs = document.createElement("span");
+        newPs.className = "ps";
+        newPs.contentEditable = "true";
         var phon = document.createTextNode("/here/");
-        new_ps.appendChild(phon);
+        newPs.appendChild(phon);
 
-        var new_delete = document.createElement("img");
-        new_delete.setAttribute("class", "delete");
-        new_delete.setAttribute("src", "image/delete.png");
+        var newDelete = document.createElement("img");
+        newDelete.className = "delete";
+        newDelete.src = "image/delete.png";
 
-        new_one_ps.appendChild(new_ps);
-        new_one_ps.appendChild(new_delete);
-        phon_block.insertBefore(new_one_ps, add_ps);
+        newOnePs.appendChild(newPs);
+        newOnePs.appendChild(newDelete);
+        phonBlock.insertBefore(newOnePs, addPs);
 
         // bind clickEvent for new delete
-        new_delete.onclick = function () {
-            alert("haha");
-            var one_ps = this.parentNode;
-            phon_block.removeChild(one_ps);
+        newDelete.onclick = function () {
+            var onePs = this.parentNode;
+            phonBlock.removeChild(onePs);
         }
     }
 
@@ -73,58 +73,58 @@ $(document).ready(function () {
     save.onclick = function () {
 
         // get phonetic symbol
-        var phonetic_block = phon_block.getElementsByClassName("ps");
+        var phoneticBlock = phonBlock.getElementsByClassName("ps");
         words.phonetic = []; // init
-        for (var i = 0; i < phonetic_block.length; ++i) {
-            words.phonetic[i] = phonetic_block[i].firstChild.nodeValue;
+        for (var i = 0; i < phoneticBlock.length; ++i) {
+            words.phonetic[i] = phoneticBlock[i].firstChild.nodeValue;
         }
         
         // get bref translate
-        var bref_block = document.getElementById("bref_block").childNodes;
-        var bref_li = [];
+        var brefBlock = document.getElementById("bref_block").childNodes;
+        var brefLi = [];
 
-        for (var i = 0; i < bref_block.length; ++i) {
-            if (bref_block[i].nodeType == 1) {
-                bref_li[bref_li.length] = bref_block[i];  // add a new value in array's end
+        for (var i = 0; i < brefBlock.length; ++i) {
+            if (brefBlock[i].nodeType == 1) {
+                brefLi[brefLi.length] = brefBlock[i];  // add a new value in array's end
             }
         }
 
         // focus on span
-        var bref_fin = [];
-        for (var i = 0; i < bref_li.length; ++i) {
-            bref_fin[bref_fin.length] = bref_li[i].getElementsByClassName("c_tran");
+        var brefFin = [];
+        for (var i = 0; i < brefLi.length; ++i) {
+            brefFin[brefFin.length] = brefLi[i].getElementsByClassName("c_tran");
         }
-        for (var j = 0; j < bref_fin[0].length; ++j) {
-            words.characteristic.n.bref[j] = bref_fin[0][j].firstChild.nodeValue;
+        for (var j = 0; j < brefFin[0].length; ++j) {
+            words.characteristic.n.bref[j] = brefFin[0][j].firstChild.nodeValue;
         }
-        for (var j = 0; j < bref_fin[1].length; ++j) {
-            words.characteristic.adj.bref[j] = bref_fin[1][j].firstChild.nodeValue;
+        for (var j = 0; j < brefFin[1].length; ++j) {
+            words.characteristic.adj.bref[j] = brefFin[1][j].firstChild.nodeValue;
         }
         
         ///////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////
         // get detail translate
-        var detail_block = document.getElementById("detail_block").childNodes;
-        var detail_li = [];
+        var detailBlock = document.getElementById("detail_block").childNodes;
+        var detailLi = [];
 
-        for (var i = 0; i < detail_block.length; ++i) {
-            if (detail_block[i].nodeType == 1) {
-                detail_li[detail_li.length] = detail_block[i];  // add a new value in array's end
+        for (var i = 0; i < detailBlock.length; ++i) {
+            if (detailBlock[i].nodeType == 1) {
+                detailLi[detailLi.length] = detailBlock[i];  // add a new value in array's end
             }
         }
 
         // focus on span
-        var detail_fin = [];
+        var detailFin = [];
         var sentence = [];
-        for (var i = 0; i < detail_li.length; ++i) {
-            detail_fin[detail_fin.length] = detail_li[i].getElementsByClassName("c_tran");
-            sentence[sentence.length] = detail_li[i].getElementsByClassName("c_sen");
+        for (var i = 0; i < detailLi.length; ++i) {
+            detailFin[detailFin.length] = detailLi[i].getElementsByClassName("c_tran");
+            sentence[sentence.length] = detailLi[i].getElementsByClassName("c_sen");
         }
-        for (var j = 0; j < detail_fin[0].length; ++j) {
-            words.characteristic.n.detail[j] = detail_fin[0][j].firstChild.nodeValue;
+        for (var j = 0; j < detailFin[0].length; ++j) {
+            words.characteristic.n.detail[j] = detailFin[0][j].firstChild.nodeValue;
         }
-        for (var j = 0; j < detail_fin[1].length; ++j) {
-            words.characteristic.adj.detail[j] = detail_fin[1][j].firstChild.nodeValue;
+        for (var j = 0; j < detailFin[1].length; ++j) {
+            words.characteristic.adj.detail[j] = detailFin[1][j].firstChild.nodeValue;
         }
         // sentense n
         words.characteristic.n.ch_sentence = sentence[0][0].firstChild.nodeValue;
