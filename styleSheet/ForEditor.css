@@ -89,7 +89,8 @@ ul {
     margin-bottom: 16px;
     float: left;
 }
-#bref_tran .characteristic {
+#bref_tran .characteristic,
+#detial_tran .characteristic {
     height: 28px;
     width: 100%;
     margin-top: 8px;
