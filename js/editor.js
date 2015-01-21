@@ -61,115 +61,7 @@ $(document).ready(function () {
         newOnePs.insertBefore(newPs, newDelete);
         phonBlock.insertBefore(newOnePs, addPs);
     }
-
     
-    // init bref-block
-    var brefBlock = document.getElementById("bref-block");
-
-    for (var i = 0; i < 4; ++i) {
-        if (words.characteristic[i].exist == true) {  // if this chara is exist
-
-            var brefLi = document.createElement("li");
-            brefLi.className = "characteristic";
-            brefLi.className += " cha-" + words.characteristic[i].chara;
-
-            var img = document.createElement("img");
-            img.className = "ico-" + words.characteristic[i].chara;
-            img.src = "image/" + words.characteristic[i].chara + ".png";
-            brefLi.appendChild(img);
-            
-            var translate = document.createElement("div");
-            translate.className = "translate";
-
-            var brefLength = words.characteristic[i].bref.length;
-            for (var j = 0; j < brefLength; ++j) {
-                for (var k = 0; k < words.characteristic[i].bref[j].length; ++k) {
-                    var cTran = document.createElement("span");
-                    cTran.className = "c-tran";
-                    cTran.contentEditable = true;
-                    
-                    var tran = document.createTextNode(words.characteristic[i].bref[j][k]);
-                    cTran.appendChild(tran);
-                    translate.appendChild(cTran);
-
-                    if (k != words.characteristic[i].bref[j].length - 1) {
-                        translate.appendChild(document.createTextNode(", "));
-                        
-                    }
-                }
-
-                if (j != words.characteristic[i].bref.length - 1) {
-                    translate.appendChild(document.createTextNode("; "));
-                }
-            }
-            brefLi.appendChild(translate);
-            brefBlock.appendChild(brefLi);
-        }
-    }
-    
-    // init detail-block
-    var detailBlock = document.getElementById("detail-block");
-
-    for (var i = 0; i < 4; ++i) {
-        if (words.characteristic[i].exist == true) {  // if this chara is exist
-
-            var detailLi = document.createElement("li");
-            detailLi.className = "characteristic";
-            detailLi.className += " cha-" + words.characteristic[i].chara;
-
-            var img = document.createElement("img");
-            img.className = "ico-" + words.characteristic[i].chara;
-            img.src = "image/" + words.characteristic[i].chara + ".png";
-            detailLi.appendChild(img);
-
-            var translate = document.createElement("div");
-            translate.className = "translate";
-
-            var detailLength = words.characteristic[i].detail.length;
-            for (var j = 0; j < detailLength; ++j) {
-                for (var k = 0; k < words.characteristic[i].detail[j].length; ++k) {
-                    var cTran = document.createElement("span");
-                    cTran.className = "c-tran";
-                    cTran.contentEditable = true;
-
-                    var tran = document.createTextNode(words.characteristic[i].detail[j][k]);
-                    cTran.appendChild(tran);
-                    translate.appendChild(cTran);
-
-                    if (k != words.characteristic[i].detail[j].length - 1) {
-                        translate.appendChild(document.createTextNode(", "));
-                    }
-                }
-
-                if (j != words.characteristic[i].detail.length - 1) {
-                    translate.appendChild(document.createTextNode("; "));
-                }
-            }
-
-            // sentence
-            var chineseSenText = document.createTextNode(words.characteristic[i].chSentence);
-            var englishSenText = document.createTextNode(words.characteristic[i].enSentence);
-
-            var chineseSen = document.createElement("span");
-            chineseSen.className = "chinese-s" + " c-sen";
-            chineseSen.contentEditable = true;
-            chineseSen.appendChild(chineseSenText);
-
-            var englishSen = document.createElement("span");
-            englishSen.className = "english-s" + " c-sen";
-            englishSen.contentEditable = true;
-            englishSen.appendChild(englishSenText);
-
-            var sentence = document.createElement("div");
-            sentence.className = "sentence";
-            sentence.appendChild(chineseSen);
-            sentence.appendChild(englishSen);
-
-            detailLi.appendChild(translate);
-            detailLi.appendChild(sentence);
-            detailBlock.appendChild(detailLi);
-        }
-    }
 
     // delete phonetic-symbol
     var phonBlock = document.getElementById("phonetic-symbol");
@@ -208,73 +100,166 @@ $(document).ready(function () {
         }
     }
 
-    //
-    // There has some problmes
-    //
-    //// save
-    //var save = document.getElementById("save");
-    //save.onclick = function () {
+    // init bref-block
+    var brefBlock = document.getElementById("bref-block");
 
-    //    // get phonetic symbol
-    //    var phoneticBlock = phonBlock.getElementsByClassName("ps");
-    //    words.phonetic = []; // init
-    //    for (var i = 0; i < phoneticBlock.length; ++i) {
-    //        words.phonetic[i] = phoneticBlock[i].firstChild.nodeValue;
-    //    }
+    for (var i = 0; i < 4; ++i) {
+        if (words.characteristic[i].exist == true) {  // if this chara is exist
+
+            var brefLi = document.createElement("li");
+            brefLi.className = "characteristic";
+            brefLi.className += " cha-" + words.characteristic[i].chara;
+
+            var img = document.createElement("img");
+            img.className = "ico-" + words.characteristic[i].chara;
+            img.src = "image/" + words.characteristic[i].chara + ".png";
+            brefLi.appendChild(img);
+
+            var translate = document.createElement("div");
+            translate.className = "translate";
+
+            var brefString = "";
+            var brefLength = words.characteristic[i].bref.length;
+            for (var j = 0; j < brefLength; ++j) {
+                for (var k = 0; k < words.characteristic[i].bref[j].length; ++k) {
+                    
+                    brefString += words.characteristic[i].bref[j][k];
+
+                    if (k != words.characteristic[i].bref[j].length - 1) {
+                        brefString += ", ";
+                    }
+                }
+
+                if (j != words.characteristic[i].bref.length - 1) {
+                    brefString += "; ";
+                }
+            }
+            translate.innerHTML = "<span class=\"c-tran\" contenteditable=\"true\">" +
+                brefString + "</span>";
+            brefLi.appendChild(translate);
+            brefBlock.appendChild(brefLi);
+        }
+    }
+
+    // init detail-block
+    var detailBlock = document.getElementById("detail-block");
+
+    for (var i = 0; i < 4; ++i) {
+        if (words.characteristic[i].exist == true) {  // if this chara is exist
+
+            var detailLi = document.createElement("li");
+            detailLi.className = "characteristic";
+            detailLi.className += " cha-" + words.characteristic[i].chara;
+
+            var img = document.createElement("img");
+            img.className = "ico-" + words.characteristic[i].chara;
+            img.src = "image/" + words.characteristic[i].chara + ".png";
+            detailLi.appendChild(img);
+
+            var translate = document.createElement("div");
+            translate.className = "translate";
+
+            var detailString = ""; // init
+            var detailLength = words.characteristic[i].detail.length;
+            for (var j = 0; j < detailLength; ++j) {
+                for (var k = 0; k < words.characteristic[i].detail[j].length; ++k) {
+
+                    detailString += words.characteristic[i].detail[j][k];
+
+                    if (k != words.characteristic[i].detail[j].length - 1) {
+                        detailString += ", ";
+                    }
+                }
+
+                if (j != words.characteristic[i].detail.length - 1) {
+                    detailString += "; ";
+                }
+            }
+            translate.innerHTML = "<span class=\"c-tran\" contenteditable=\"true\">" +
+                detailString + "</span>";
+
+            // sentence
+            var chineseSenText = document.createTextNode(words.characteristic[i].chSentence);
+            var englishSenText = document.createTextNode(words.characteristic[i].enSentence);
+
+            var chineseSen = document.createElement("span");
+            chineseSen.className = "chinese-s" + " c-sen";
+            chineseSen.contentEditable = true;
+            chineseSen.appendChild(chineseSenText);
+
+            var englishSen = document.createElement("span");
+            englishSen.className = "english-s" + " c-sen";
+            englishSen.contentEditable = true;
+            englishSen.appendChild(englishSenText);
+
+            var sentence = document.createElement("div");
+            sentence.className = "sentence";
+            sentence.appendChild(chineseSen);
+            sentence.appendChild(englishSen);
+
+            detailLi.appendChild(translate);
+            detailLi.appendChild(sentence);
+            detailBlock.appendChild(detailLi);
+        }
+    }
+
+    // face to data
+    var save = document.getElementById("save");
+    save.onclick = function () {
         
-    //    // get bref translate
-    //    var brefBlock = document.getElementById("bref-block").childNodes;
-    //    var brefLi = [];
-
-    //    for (var i = 0; i < brefBlock.length; ++i) {
-    //        if (brefBlock[i].nodeType == 1) {
-    //            brefLi[brefLi.length] = brefBlock[i];  // add a new value in array's end
-    //        }
-    //    }
-
-    //    // focus on span
-    //    var brefFin = [];
-    //    for (var i = 0; i < brefLi.length; ++i) {
-    //        brefFin[brefFin.length] = brefLi[i].getElementsByClassName("c-tran");
-    //    }
-    //    for (var j = 0; j < brefFin[0].length; ++j) {
-    //        words.characteristic.n.bref[j] = brefFin[0][j].firstChild.nodeValue;
-    //    }
-    //    for (var j = 0; j < brefFin[1].length; ++j) {
-    //        words.characteristic.adj.bref[j] = brefFin[1][j].firstChild.nodeValue;
-    //    }
+        var phonetic = document.getElementsByClassName("ps");
+        var brefTranslate = document.getElementById("bref-tran")
+            .getElementsByClassName("c-tran");
+        var detailTranslate = document.getElementById("detial-tran")
+            .getElementsByClassName("c-tran");
+        var chSentence = document.getElementsByClassName("chinese-s");
+        var enSentence = document.getElementsByClassName("english-s");
         
-    //    ///////////////////////////////////////////////////////////////
-    //    ///////////////////////////////////////////////////////////////
-    //    // get detail translate
-    //    var detailBlock = document.getElementById("detail-block").childNodes;
-    //    var detailLi = [];
+        var x = 0; // x use to count
 
-    //    for (var i = 0; i < detailBlock.length; ++i) {
-    //        if (detailBlock[i].nodeType == 1) {
-    //            detailLi[detailLi.length] = detailBlock[i];  // add a new value in array's end
-    //        }
-    //    }
+        for (var i = 0; i < 4; ++i) {
+            if (words.characteristic[i].exist == true) {
 
-    //    // focus on span
-    //    var detailFin = [];
-    //    var sentence = [];
-    //    for (var i = 0; i < detailLi.length; ++i) {
-    //        detailFin[detailFin.length] = detailLi[i].getElementsByClassName("c-tran");
-    //        sentence[sentence.length] = detailLi[i].getElementsByClassName("c-sen");
-    //    }
-    //    for (var j = 0; j < detailFin[0].length; ++j) {
-    //        words.characteristic.n.detail[j] = detailFin[0][j].firstChild.nodeValue;
-    //    }
-    //    for (var j = 0; j < detailFin[1].length; ++j) {
-    //        words.characteristic.adj.detail[j] = detailFin[1][j].firstChild.nodeValue;
-    //    }
-    //    // sentense n
-    //    words.characteristic.n.ch_sentence = sentence[0][0].firstChild.nodeValue;
-    //    words.characteristic.n.en_sentence = sentence[0][1].firstChild.nodeValue;
-    //    // adj
-    //    words.characteristic.adj.ch_sentence = sentence[1][0].firstChild.nodeValue;
-    //    words.characteristic.adj.en_sentence = sentence[1][1].firstChild.nodeValue;
-    //}
+                // phonetic
+                words.phonetic = new Array(); // init
+                for (var j = 0; j < phonetic.length; ++j) {
+                    words.phonetic[j] = phonetic[j].firstChild.nodeValue;
+                }
 
+                // bref
+                var brefString = brefTranslate[x].firstChild.nodeValue;
+                var brefClass = brefString.split(";");
+                words.characteristic[i].bref = new Array(); //init
+                for (var j = 0; j < brefClass.length; ++j) {
+                    words.characteristic[i].bref[j] = new Array(); // init
+
+                    var brefItem = brefClass[j].split(",");
+                    for (var k = 0; k < brefItem.length; ++k) {
+                        words.characteristic[i].bref[j][k] = brefItem[k].trim();
+                        // trim() use to delete terminal balnk
+                    }
+                }
+
+                // detail
+                var detailString = detailTranslate[x].firstChild.nodeValue;
+                var detailClass = detailString.split(";");
+                words.characteristic[i].detail = new Array(); //init
+                for (var j = 0; j < detailClass.length; ++j) {
+                    words.characteristic[i].detail[j] = new Array(); // init
+
+                    var detailItem = detailClass[j].split(",");
+                    for (var k = 0; k < detailItem.length; ++k) {
+                        words.characteristic[i].detail[j][k] = detailItem[k].trim();
+                        // trim() use to delete terminal balnk
+                    }
+                }
+
+                // sentence
+                words.characteristic[i].chSentence = chSentence[x].firstChild.nodeValue;
+                words.characteristic[i].enSentence = enSentence[x].firstChild.nodeValue;
+
+                ++x; // add 1
+            }
+        }
+    }
 })
