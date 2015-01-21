@@ -1,4 +1,8 @@
-﻿var words = {
+﻿
+// 
+//  This part work for initing editor and update editor
+//
+var words = {
     phonetic: ["/‘hed.wɜrd1/", "/‘hed.wɜrd2/"],
     characteristic: [
         { // conj
