@@ -1,11 +1,14 @@
-﻿body {
+﻿/********************************************
+    This part word for editor
+********************************************/
+body {
     margin: 0;
     width: 100%;
     height: 100%;
     background-color: #C8C8C8;
 }
 
-#editor_container {
+#editor-container {
     margin: 0 auto;
     padding: 35px 44px;
     width: 391px;
@@ -14,32 +17,32 @@
     background-color: white;
 }
 
-ul {
+#editor-container ul {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.the_word {
+#editor-container .the-word {
     height: 34px;
     width: auto;
     color: #333333;
     font: normal normal 26px 方正等线;
 }
 
-#phonetic_symbol {
+#editor-container #phonetic-symbol {
     height: auto;
     min-height: 23px;
     margin: 4px 0 10px 0; 
     width: 100%;
     float: left;
 }
-#phonetic_symbol .one_ps {
+#editor-container #phonetic-symbol .one-ps {
     height: 23px;
     float: left;
     margin-left: 2px;
 }
-#phonetic_symbol .one_ps .ps {
+#editor-container #phonetic-symbol .one-ps .ps {
     color: #999999;
     height: 23px;
     width: auto;
@@ -50,7 +53,7 @@ ul {
     float: left;
 }
 
-#phonetic_symbol .one_ps .delete {
+#editor-container #phonetic-symbol .one-ps .delete {
     width: 14px;
     height: 14px;
     border-radius: 50%;
@@ -64,7 +67,7 @@ ul {
     cursor: pointer;
 }
 
-#phonetic_symbol #add_ps {
+#editor-container #phonetic-symbol #add-ps {
     height: 23px;
     width: 68px;
     line-height: 23px;
@@ -76,7 +79,7 @@ ul {
     cursor: pointer;
 }
 
-.head {
+#editor-container .head {
     height: 23px;
     min-width: 68px;
     width: auto;
@@ -85,59 +88,60 @@ ul {
     font: normal normal 16px 方正等线;
 }
 
-#bref_tran {
+#editor-container #bref-tran {
     margin-bottom: 16px;
     float: left;
 }
-#bref_tran .characteristic,
-#detial_tran .characteristic {
+#editor-container #bref-tran .characteristic,
+#editor-container #detial-tran .characteristic {
     height: 28px;
     width: 100%;
     margin-top: 8px;
 }
 
-.ico_n {
+#editor-container .ico-n {
     height: 28px;
     width: 26px;
     display: block;
 }
 
-.ico_adj {
+#editor-container .ico-adj {
     height: 28px;
     width: 38px;
     
 }
 
-img {
+#editor-container img {
     float: left;
 }
 
-.characteristic .translate {
+#editor-container .characteristic .translate {
     height: auto;
     min-height: 28px;
     color: #333333;
     margin: 0;
-    padding: 0px 0 0 9px;
+    padding: 0 0 0 9px;
     line-height: 28px;
+    -ms-word-wrap: break-word;
     word-wrap: break-word;
     font-size: 16px;
-    font-family:  方正等线;
+    font-family: 方正等线;
     float: left;
 }
 
-.cha_n .translate {
+#editor-container .cha-n .translate {
     width: 353px;
 }
 
-.cha_adj .translate {
+#editor-container .cha-adj .translate {
     width: 341px;
 }
 
-#detial_tran {
+#editor-container #detial-tran {
     float: left;
 }
 
-#detial_tran .characteristic .sentence {
+#editor-container #detial-tran .characteristic .sentence {
     height: auto;
     min-height: 41px;
     width: 100%;
@@ -146,15 +150,14 @@ img {
     float: left;
 }
 
-.translate span {
-    /*width: 55px;*/
+#editor-container .translate span {
     border: 0;
     font-size: 16px;
     font-family:  方正等线;
     outline: 0;
 }
 
-.sentence span {
+#editor-container .sentence span {
     display: block;
     width: 312px;
     min-height: 17px;
@@ -162,23 +165,21 @@ img {
     color: #333333;
     font-size: 14px;
     font-family: 方正等线;
+    -ms-word-break: break-all;
     word-break: break-all;
     outline: 0;
     border: 0;
 }
 
-.sentense .english_s {
+#editor-container .sentense .english-s {
     margin-top: 3px;
 }
 
-span {
+#editor-container span {
     outline: 0;
 }
-/*input:focus {
-    outline-color: none;
-}*/
 
-button {
+#editor-container button {
     width: 40px;
     height: 20px;
 }

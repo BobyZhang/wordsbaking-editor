@@ -2,9 +2,9 @@
 <html>
 <head>
   <title></title>
-  <link rel="stylesheet" href="styleSheet/forEditor.css" />
-  <script type="text/javascript" src="script/jquery-1.8.3.min.js"></script>
-  <script type="text/javascript" src="script/forEditor.js"></script>
+  <link rel="stylesheet" href="css/editor.css" />
+  <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+  <script type="text/javascript" src="js/editor.js"></script>
   <!--<script src="script/angular-1.0.1.min.js"></script>
   <script>
     function editor($scope) {
@@ -52,10 +52,10 @@
   </script>-->
 </head>
 <body>
-  <div id="editor_container">
-    <div class="the_word">headword</div>
-    <div id="phonetic_symbol">
-      <div id="add_ps">添加发音</div>
+  <div id="editor-container">
+    <div class="the-word">headword</div>
+    <div id="phonetic-symbol">
+      <div id="add-ps">添加发音</div>
       <!--<div class="one_ps">
         <span class="ps">/‘hed.wɜrd1/</span>
         <img class="delete" src="image/delete.png" />
@@ -65,19 +65,16 @@
         <img class="delete" src="image/delete.png" />
       </div>-->
     </div>
-    <div id="bref_tran">
+    <div id="bref-tran">
       <div class="head">简短释义</div>
-      <ul id="bref_block">
+      <ul id="bref-block">
         <!--<li class="characteristic cha_n">
           <img class="ico_n" src="image/n.png" />
           <div class="translate">  
             <span class="c_tran" contenteditable="true">释义A1</span>,
             <span class="c_tran" contenteditable="true">释义A2</span>
-            <input placeholder="释义A1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />,
-            <input placeholder="释义A2" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />
             <input ng-repeat="x in word.characteristic" ng-model="word.characteristic.groups.briefs[x]" />
             <span contenteditable="true">{{test}}</span>
-            
           </div>
         </li>
         <li class="characteristic cha_adj">
@@ -85,15 +82,13 @@
           <div class="translate">
             <span class="c_tran" contenteditable="true">释义B1</span>;
             <span class="c_tran" contenteditable="true">释义C1</span>
-            <input placeholder="释义B1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />;
-            <input placeholder="释义C1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />
           </div>
         </li>-->
       </ul>
     </div>
-    <div id="detial_tran">
+    <div id="detial-tran">
       <div class="head">详细释义</div>
-      <ul id="detail_block">
+      <ul id="detail-block">
         <!--<li class="characteristic cha_n">
           <img class="ico_n" src="image/n.png" />
           <div class="translate">
@@ -101,14 +96,8 @@
             <span class="c_tran" contenteditable="true">释义A2</span>,
             <span class="c_tran" contenteditable="true">释义A3</span>,
             <span class="c_tran" contenteditable="true">释义A4</span>
-            <input placeholder="释义A1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />, 
-            <input placeholder="释义A2" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />, 
-            <input placeholder="释义A3" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />,
-            <input placeholder="释义A4" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />
           </div>
           <div class="sentence">
-            <input class="chinese_s" placeholder="例句中文" />
-            <input class="english_s" placeholder="Sentence in English" />
             <span class="chinese_s c_sen" contenteditable="true">例句中文</span>
             <span class="english_s c_sen" contenteditable="true">Sentence in English</span>
           </div>
@@ -120,14 +109,8 @@
             <span class="c_tran" contenteditable="true">释义B2</span>;
             <span class="c_tran" contenteditable="true">释义C1</span>,
             <span class="c_tran" contenteditable="true">释义C2</span>
-            <input placeholder="释义B1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />,
-            <input placeholder="释义B2" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />;
-            <input placeholder="释义C1" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />,
-            <input placeholder="释义C2" onkeydown="this.onkeyup();" onkeyup="this.size=(this.value.length>3?this.value.length*2:6);" size="6" />
           </div>
           <div class="sentence">
-            <input class="chinese_s" placeholder="例句中文" />
-            <input class="english_s" placeholder="Sentence in English" />
             <span class="chinese_s c_sen" contenteditable="true">例句中文</span>
             <span class="english_s c_sen" contenteditable="true">Sentence in English</span>
           </div>
